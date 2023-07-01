@@ -28,12 +28,14 @@ function generateRandomEntries() {
     }
 
     if (daytime[randomDaytimeIndex] === 'night') {
-        const replaceSunSting = weather.map((e) => e.replace('sun', 'clear'))
-        const filteredNightWeather = replaceSunSting.filter((condition) => condition !== 'sun');
-        randomWeatherIndex = Math.floor(Math.random() * filteredNightWeather.length);
-        randomWeather = filteredNightWeather[randomWeatherIndex];
-    }
+        const replaceSunString = weather.map((condition) => {
+            return Array.isArray(condition) ?
+                (condition.map((subCondition) => subCondition === 'sun' ? 'clear' : subCondition)) :
+                (condition === 'sun' ? 'clear' : condition)
+        });
 
+        randomWeather = replaceSunString[randomWeatherIndex];
+    }
 
     const randomWeatherElement = document.getElementById('randomWeather');
     randomWeatherElement.textContent = randomWeather;
