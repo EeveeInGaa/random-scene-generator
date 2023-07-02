@@ -1,6 +1,6 @@
 const weather = ['sun', ['sun', 'clouds'], ['sun', 'wind'], 'rain', ['rain', 'wind'], ['rain', 'strom'], 'wind', 'clouds', 'snow', 'fog', ['fog', 'sun'], 'storm'];
 const landscape = ['forest', 'lake', 'sea', 'mountain', 'meadows', 'beach', 'wetland'];
-const daytime = ['morning', 'midday', 'afternoon', 'evening', 'night'];
+const daytime = ['sunrise', 'morning', 'midday', 'afternoon', 'evening', 'sunset', 'night'];
 const season = ['spring', 'summer', 'autumn', 'winter'];
 
 const button = document.getElementById('randomButton');
@@ -34,7 +34,9 @@ function generateRandomEntries() {
                 (condition === 'sun' ? 'clear' : condition)
         });
 
-        randomWeather = replaceSunString[randomWeatherIndex];
+        const filteredReplaceSunString = replaceSunString.filter((condition) => condition !== 'sun');
+        randomWeatherIndex = Math.floor(Math.random() * filteredReplaceSunString.length);
+        randomWeather = filteredReplaceSunString[randomWeatherIndex];
     }
 
     const randomWeatherElement = document.getElementById('randomWeather');
