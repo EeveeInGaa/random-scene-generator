@@ -5,6 +5,7 @@ const season = ['spring', 'summer', 'autumn', 'winter'];
 
 const button = document.getElementById('randomButton');
 button.addEventListener('click', generateRandomEntries);
+window.addEventListener('load', generateRandomEntries);
 
 function generateRandomEntries() {
     const randomLandscapeIndex = Math.floor(Math.random() * landscape.length);
