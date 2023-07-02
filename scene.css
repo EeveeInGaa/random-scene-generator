@@ -1,0 +1,76 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Bodoni Moda', serif;
+    src: url('./assets/BodoniModa_28pt-SemiBold.ttf') format('ttf');
+    font-style: normal;
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'Raleway', serif;
+    src: url('./assets/Raleway-ExtraLight.ttf') format('ttf');
+    font-style: normal;
+    font-weight: 200;
+}
+
+html, body {
+  height: 100%;
+    position: relative;
+    margin: 0;
+}
+
+body {
+    font-size: 16px;
+}
+
+header {
+    text-align: center;
+    margin: 15px 0;
+    font-size: 20px;
+}
+
+main {
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 20px 0;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    font-family: 'Raleway', serif;
+    _font-family: 'Bodoni Moda', serif;
+    font-size: 40px;
+}
+
+.content-wrapper > p {
+    margin: 0;
+}
+
+#randomButton {
+    all: unset;
+    background-color: #a5b58b;
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-family: 'Raleway', serif;
+}
+
+#randomButton:hover {
+    background-color: #90b58b;
+    cursor: pointer;
+}
+
