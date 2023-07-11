@@ -75,8 +75,19 @@ main {
     margin: 0;
 }
 
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #262626;
+        color: #e8e8e8;
+    }
+
+    #randomButton {
+        color: #262626;
+    }
+}
+
 #randomButton {
-    all: unset;
+    border: none;
     background-color: #a5b58b;
     padding: 10px 20px;
     border-radius: 100px;
