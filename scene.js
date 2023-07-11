@@ -1,6 +1,6 @@
 const weather = ['sun', ['sun', 'clouds'], ['sun', 'wind'], ['sun', 'rain'], ['sun', 'fog'], 'rain', ['rain', 'wind'], ['rain', 'storm'], 'clouds', ['clouds', 'wind'], 'snow', ['snow', 'sun'], ['snow', 'storm']];
 const landscape = ['forest', 'lake', 'sea', 'mountain', 'meadows', 'beach', 'river'];
-const daytime = ['sunrise', 'morning', 'midday', 'afternoon', 'evening', 'sunset', 'night'];
+const daytime = ['dawn', 'sunrise', 'morning', 'midday', 'afternoon', 'evening', 'sunset', 'dusk', 'night'];
 const season = ['spring', 'summer', 'autumn', 'winter'];
 
 const button = document.getElementById('randomButton');
@@ -44,7 +44,7 @@ function generateRandomEntries() {
     });
 
     const formattedNightWeather = formattedWinterWeather.map(item => {
-        if (randomDaytime === 'night') {
+        if (randomDaytime === 'night' || randomDaytime === 'dawn' || randomDaytime === 'dusk') {
         return item === 'sun'
             ? 'clear'
             : Array.isArray(item)
