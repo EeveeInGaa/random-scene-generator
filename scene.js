@@ -1,5 +1,5 @@
-const weather = ['sun', ['sun', 'clouds'], ['sun', 'wind'], 'rain', ['rain', 'wind'], ['rain', 'storm'], 'wind', 'clouds', 'snow', 'fog', ['fog', 'sun'], 'storm'];
-const landscape = ['forest', 'lake', 'sea', 'mountain', 'meadows', 'beach', 'wetland'];
+const weather = ['sun', ['sun', 'clouds'], ['sun', 'wind'], ['sun', 'rain'], ['sun', 'fog'], 'rain', ['rain', 'wind'], ['rain', 'storm'], 'clouds', ['clouds', 'wind'], 'snow', ['snow', 'sun'], ['snow', 'storm']];
+const landscape = ['forest', 'lake', 'sea', 'mountain', 'meadows', 'beach', 'river'];
 const daytime = ['sunrise', 'morning', 'midday', 'afternoon', 'evening', 'sunset', 'night'];
 const season = ['spring', 'summer', 'autumn', 'winter'];
 
@@ -27,7 +27,23 @@ function generateRandomEntries() {
     const randomDaytime = getRandomElement(daytime);
     const randomSeason = getRandomElement(season);
 
-    const formattedNightWeather = weather.map(item => {
+    const formattedWinterWeather = weather.filter(el => {
+        if (Array.isArray(el)) {
+            if (randomSeason === 'winter') {
+                return !el.includes('rain');
+            } else {
+                return !el.includes('snow');
+            }
+        } else {
+            if (randomSeason === 'winter') {
+                return el !== 'rain';
+            } else {
+                return el !== 'snow';
+            }
+        }
+    });
+
+    const formattedNightWeather = formattedWinterWeather.map(item => {
         if (randomDaytime === 'night') {
         return item === 'sun'
             ? 'clear'
@@ -40,53 +56,17 @@ function generateRandomEntries() {
     })
 
     const formattedWeather = formatSubArray(formattedNightWeather);
-
     const randomWeather = getRandomElement(formattedWeather);
-
-
-
-   /* if (season[randomSeasonIndex] === 'winter') {
-        const filteredWinterWeather = weather.filter((condition) => condition !== 'rain');
-        randomWeatherIndex = Math.floor(Math.random() * filteredWinterWeather.length);
-        randomWeather = filteredWinterWeather[randomWeatherIndex];
-    } else {
-        const filteredWeather = weather.filter((condition) => condition !== 'snow');
-        randomWeatherIndex = Math.floor(Math.random() * filteredWeather.length);
-        randomWeather = filteredWeather[randomWeatherIndex];
-    }
-
-    if (daytime[randomDaytimeIndex] === 'night') {
-        const replaceSunString = weather.map((condition) => {
-            return Array.isArray(condition) ?
-                (condition.map((subCondition) => subCondition === 'sun' ? 'clear' : subCondition)) :
-                (condition === 'sun' ? 'clear' : condition)
-        });
-
-        const filteredReplaceSunString = replaceSunString.filter((condition) => condition !== 'sun');
-        randomWeatherIndex = Math.floor(Math.random() * filteredReplaceSunString.length);
-        randomWeather = filteredReplaceSunString[randomWeatherIndex];
-    }*/
 
     const randomWeatherElement = document.getElementById('randomWeather');
     randomWeatherElement.textContent = randomWeather;
 
- const randomLandscapeElement = document.getElementById('randomLandscape');
+    const randomLandscapeElement = document.getElementById('randomLandscape');
     randomLandscapeElement.textContent = randomLandscape;
 
- const randomDaytimeElement = document.getElementById('randomDaytime');
+    const randomDaytimeElement = document.getElementById('randomDaytime');
     randomDaytimeElement.textContent = randomDaytime;
 
     const randomSeasonElement = document.getElementById('randomSeason');
     randomSeasonElement.textContent = randomSeason;
 }
-
-/*
-shorter way to do it:
-
-const generateRandomEntries = () => {
-    const randomDaytime = daytime[Math.floor(Math.random() * daytime.length)];
-    const randomSeason = season[Math.floor(Math.random() * season.length)];
-
-    document.getElementById('randomDaytime').textContent = randomDaytime;
-    document.getElementById('randomSeason').textContent = randomSeason;
-};*/
