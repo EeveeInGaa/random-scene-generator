@@ -36,7 +36,7 @@ header {
 
 main {
     margin: 0 auto;
-    width: fit-content;
+    _width: fit-content;
 }
 
 .wrapper {
@@ -45,16 +45,30 @@ main {
     align-items: center;
     gap: 30px;
     padding: 20px 0;
+    width: 100%;
 }
 
 .content-wrapper {
+    margin: 0 10%;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 20px;
     font-family: 'Raleway', serif;
     _font-family: 'Bodoni Moda', serif;
     font-size: 40px;
+}
+
+@media screen and (max-width: 1060px) {
+    .content-wrapper {
+        flex-direction: column;
+    }
+
+    .separator {
+        display: none;
+    }
 }
 
 .content-wrapper > p {
@@ -73,4 +87,3 @@ main {
     background-color: #90b58b;
     cursor: pointer;
 }
-
